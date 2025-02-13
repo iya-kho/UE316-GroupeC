@@ -1,38 +1,35 @@
-{#}
-<ul class="nav">
-	<li class="nav-item">
-		<a class="nav-link" href="{{ path('app_front') }}">Accueil</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="{{ path('app_front_actualites') }}">Actualités</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="{{ path('app_front_contacts') }}">Contacts</a>
-	</li>
-</ul>
-{#}
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="{{ path('app_front') }}">Notre Application</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="{{ path('app_front') }}">Accueil</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_front_actualites') }}">Actualités</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_front_contacts') }}">Contacts</a>
-				</li>
-				<li class="nav-item">
-				    <button type="button" class="btn btn-outline-secondary" href="{{ path('app_register') }}">Se connecter/S'inscrire</button>
-				</li>
-			</ul>
-		</div>
-	</div>
+<nav class="navbar navbar-expand-lg fixed-top" style="background: rgba(20, 20, 20, 0.95);">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-white" href="{{ path('app_front') }}" style="font-size: 1.8em; letter-spacing: 1px;">
+            TechNova
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold" href="{{ path('app_front') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold" href="{{ path('app_actualites') }}">Actualités</a>
+                </li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold" href="{{ path('admin_dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold" href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold" href="{{ path('app_register') }}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold" href="{{ path('app_login') }}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 </nav>

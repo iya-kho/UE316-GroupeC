@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Post;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
@@ -14,35 +14,34 @@ class Comment
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne]
-    private ?User $user = null;
+    #[ORM\Column(type: 'text')]
+    private ?string $content = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
-
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $content = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Post $post = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?bool $isValid = null;
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getContent(): ?string
     {
-        return $this->user;
+        return $this->content;
     }
 
-    public function setUser(?User $user): static
+    public function setContent(string $content): static
     {
-        $this->user = $user;
+        $this->content = $content;
 
         return $this;
     }
@@ -59,18 +58,6 @@ class Comment
         return $this;
     }
 
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent(?string $content): static
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
     public function getPost(): ?Post
     {
         return $this->post;
@@ -79,18 +66,6 @@ class Comment
     public function setPost(?Post $post): static
     {
         $this->post = $post;
-
-        return $this;
-    }
-
-    public function isValid(): ?bool
-    {
-        return $this->isValid;
-    }
-
-    public function setIsValid(?bool $isValid): static
-    {
-        $this->isValid = $isValid;
 
         return $this;
     }

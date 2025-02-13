@@ -1,3 +1,27 @@
-_security_logout:
-    resource: security.route_loader.logout
-    type: service
+app_front:
+    path: /
+    controller: App\Controller\FrontController::index
+
+app_front_contacts:
+    path: /contacts
+    controller: App\Controller\FrontController::contacts
+
+app_front_login:
+    path: /login
+    controller: App\Controller\FrontController::login
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+
+admin_dashboard:
+    path: /admin
+    controller: App\Controller\Admin\DashboardController::index

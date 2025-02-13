@@ -1,9 +1,95 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Notre Application - Accueil{% endblock %}
+{% block title %}TechNova - Innovation & Futur{% endblock %}
 
 {% block body %}
-	<h1 style="text-align: center;">Notre Application - UEL316 - Groupe C</h1>
-	<h2>Accueil</h2>
-	<p>Insérer un texte (ou pas)</p>
+<style>
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl{
+	margin-right:0;
+	margin-left:0;
+	padding-left:0;
+	padding-right:0;
+}
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0a0a0a;
+        color: #e0e0e0;
+        margin: 0;
+        padding: 0;
+    }
+    .hero {
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(0, 255, 170, 0.5), rgba(0, 102, 255, 0.5)), url('https://static.vecteezy.com/system/resources/previews/012/051/235/non_2x/black-circuit-technology-business-background-modern-technology-circuit-board-texture-background-design-quantum-computer-technologies-concepts-vector.jpg');
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .hero h1 {
+        font-size: 4em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #00ffaa;
+        text-shadow: 0 0 20px rgba(0, 255, 170, 0.7);
+    }
+    .hero p {
+        font-size: 1.8em;
+        opacity: 0.9;
+    }
+    .btn-primary {
+        display: inline-block;
+        margin-top: 1em;
+        padding: 15px 30px;
+        font-size: 1.4em;
+        color: #fff;
+        background: linear-gradient(45deg, #00ffaa, #0066ff);
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(0, 255, 170, 0.5);
+        transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+        background: linear-gradient(45deg, #0066ff, #00ffaa);
+        box-shadow: 0 4px 25px rgba(0, 102, 255, 0.6);
+    }
+    .content {
+        max-width: 1000px;
+        margin: 4em auto;
+        padding: 2.5em;
+        background: rgba(20, 20, 20, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(0, 255, 170, 0.3);
+    }
+    .content h2 {
+        font-size: 2.8em;
+        border-bottom: 3px solid #00ffaa;
+        padding-bottom: 12px;
+        margin-bottom: 25px;
+        display: inline-block;
+    }
+    .content p {
+        font-size: 1.3em;
+        line-height: 1.9;
+        opacity: 0.85;
+    }
+</style>
+
+<div class="hero">
+    <div>
+        <h1>TechNova</h1>
+        <p>Plongez dans l'univers de l'innovation</p>
+        <a href="{{ path('app_actualites') }}" class="btn-primary">Explorer</a>
+    </div>
+</div>
+
+<div class="content">
+    <h2>Bienvenue sur TechNova</h2>
+    <p>Restez à la pointe de la technologie avec nos analyses approfondies, nos tendances et nos actualités sur les dernières innovations. Intelligence artificielle, cybersécurité, nouvelles technologies... Découvrez un contenu exclusif et inspirant.</p>
+    <p>Rejoignez notre communauté de passionnés et accédez à des insights uniques sur le futur du digital.</p>
+</div>
 {% endblock %}
