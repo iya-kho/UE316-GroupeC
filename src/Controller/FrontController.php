@@ -2,10 +2,9 @@
 
 namespace App\Controller;
 
-use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 final class FrontController extends AbstractController
 {
@@ -17,18 +16,6 @@ final class FrontController extends AbstractController
         ]);
     }
 
-    #[Route('/actualites', name: 'app_front_actualites')]
-    public function actu(PostRepository $postRepository): Response
-    {
-        $posts = $postRepository->findOrderByDate();
-
-        return $this->render('front/actualites.html.twig', [
-            'controller_name' => 'FrontController',
-            'posts' => $posts,
-        ]);
-    }
-
-
     #[Route('/contacts', name: 'app_front_contacts')]
     public function contacts(): Response
     {
@@ -37,4 +24,20 @@ final class FrontController extends AbstractController
         ]);
     }
 
+    #[Route('/login', name: 'app_front_login')]
+    public function login(): Response
+    {
+        return $this->render('front/login.html.twig', [
+            'controller_name' => 'FrontController',
+        ]);
+    }
+
+    // Commenter ou supprimer cette méthode pour éviter les conflits
+    // #[Route('/register', name: 'app_front_register')]
+    // public function register(): Response
+    // {
+    //     return $this->render('front/register.html.twig', [
+    //         'controller_name' => 'FrontController',
+    //     ]);
+    // }
 }
